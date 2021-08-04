@@ -17,25 +17,25 @@
         $emailValue = $checkAvailableUserEmail->fetch(PDO::FETCH_LAZY);
 
         if (mb_strlen($mail) < 2) {
-            $errors['email'] = "Email закороткий";
+            $errors['email'] = "Email very short";
         } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "Email некоректний";
+            $errors['email'] = "Email incorrect";
         } elseif ($emailValue) {
-            $errors['email'] = "Така електронна адреса уже присутня та закріплена за користувачем";
+            $errors['email'] = "This email not available";
         }
 
         if (mb_strlen($name) < 3 || mb_strlen($name) > 15) {
-            $errors['name'] = "Недопустима довжина імені (від 3 до 15 символів)";
+            $errors['name'] = "Invalid name length (3 to 15 characters)";
         }
 
         if (mb_strlen($pass) < 8) {
-            $errors['password'] = "Пароль закороткий";
+            $errors['password'] = "Password very short";
         } elseif (!preg_match('/[A-Z]/', $pass)) {
-            $errors['password'] = "Пароль має містити тільки латиницю та хоча б одну велику літеру";
+            $errors['password'] = "The password must contain only latin letters and at least one Capital letter";
         } elseif (!preg_match('/[0-9]/', $pass)) {
-            $errors['password'] = "Пароль має містити хоча б одну цифру";
+            $errors['password'] = "Password must contain at least one digit";
         } elseif (!preg_match('/^[\w\-]+$/', $pass)) {
-            $errors['password'] = "Пароль має містити тільки латиницю та символи '_', або '-' та ";
+            $errors['password'] = "Password should contain only Latin and the characters '_', or '-'";
         }
 
         if (count($errors) === 0) {

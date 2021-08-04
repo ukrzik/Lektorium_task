@@ -16,5 +16,7 @@ if (!isset($_SESSION['hash'])) {
 
 <?php require_once 'menu.php' ?>
 
+<?php require_once 'get-posts.php' ?>
+
 </body>
 </html>
