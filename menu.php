@@ -2,13 +2,12 @@
 
 $userIsGuest = true;
 
-session_start();
 if (isset($_SESSION['hash'])) {
     $userIsGuest = false;
 }
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-lg navbar-light navbar-block">
     <div class="container">
         <a class="navbar-brand" href="/">Lektorium</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +24,7 @@ if (isset($_SESSION['hash'])) {
                         <a class="nav-link" href="register.php">Register</a>
                     </li>
                 <?php else: ?>
-                    <?php if ($_SESSION['role']): ?>
+                    <?php if (!$_SESSION['role']): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="create-post.php">Create post</a>
                         </li>
@@ -35,7 +34,7 @@ if (isset($_SESSION['hash'])) {
                         <a class="nav-link text-info" title="Date of last login">
                             <?= $_SESSION['firstname'] ?>
                             <?= date('d.m.Y H:i', $_SESSION['auth_date']) ?>
-                            <?= $_SESSION['role'] ? 'Користувач' : 'Адміністратор' ?>
+                            <?= $_SESSION['role'] ? 'USER' : 'ADMIN' ?>
                         </a>
                     </li>
                     <li class="nav-item">

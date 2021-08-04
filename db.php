@@ -19,12 +19,14 @@ try {
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     content VARCHAR(256) NOT NULL,
-    created_at INT(25) 
+    updated_at INT(25),             
+    created_at INT(25)
     )";
 
     $pdoConn->exec($tableUsers);
     $pdoConn->exec($tablePosts);
-    echo "Tables created successfully";
+
+    echo "Tables created successfully\n";
 }
 catch(PDOException $e)
 {
@@ -34,3 +36,4 @@ catch(PDOException $e)
 
 $pdoConn = null;
 ?>
+

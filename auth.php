@@ -23,7 +23,7 @@ if(count($_POST) > 0) {
 
         header('Location: ' . '/');
     } else {
-        $errors['error'] = "Невірний email або password";
+        $errors['error'] = "Email or password not correct";
     }
 }
 ?>
