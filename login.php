@@ -1,24 +1,22 @@
+<?php
+
+session_start();
+if (isset($_SESSION['hash'])) {
+    header('Location: ' . '/');
+}
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>LEKTORIUM</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="icon" href="Favicon.png">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <?php require_once 'head.php' ?>
 </head>
 
 <body>
 
-<?= include 'menu.php' ?>
+<?php require_once 'menu.php' ?>
+
+<?php require_once 'auth.php' ?>
 
 <main class="login-form">
     <div class="cotainer">
@@ -27,11 +25,11 @@
                 <div class="card">
                     <div class="card-header">Login</div>
                     <div class="card-body">
-                        <form action="" method="">
+                        <form method="post">
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                    <input type="text" id="email_address" class="form-control" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
                                 </div>
                             </div>
 
@@ -39,6 +37,9 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="password" class="form-control" name="password" required>
+                                    <?php if (isset($errors['error'])): ?>
+                                        <p class="text-danger"><?= $errors['error'] ?></p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -47,14 +48,12 @@
                                     Login
                                 </button>
                             </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
 </main>
 
 </body>
