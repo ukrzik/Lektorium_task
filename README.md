@@ -1,7 +1,7 @@
 # This is test task for Lektorium courses by Volodymyr Zinchenko
 
 # Project link
-    http://test.lektorium-zinchenko.tk
+    http://devzinchenko.space
 
 # Setup
     1. Download project https://github.com/ukrzik/Lektorium_task
